@@ -2005,6 +2005,7 @@ static void ui_draw_vision(UIState *s) {
     ui_draw_world(s);
   }
 
+  printf('test');
   ui_draw_vision_brake(s);
 
   // Set Speed, Current Speed, Status/Events
