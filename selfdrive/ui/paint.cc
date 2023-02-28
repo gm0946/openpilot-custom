@@ -760,9 +760,7 @@ static void ui_draw_vision_face(UIState *s) {
 }
 
 static void ui_draw_vision_brake(UIState *s) {
-  const UIScene *scene = &s->scene;
-
-  const int radius = 96;
+  const int radius = 85;
   const int center_x = radius + bdr_s + 60;
   const int center_y = s->fb_h - footer_h + ((footer_h - radius) / 2);
 
