@@ -1997,7 +1997,7 @@ static void ui_draw_grid(UIState *s) {
   }
   nvgStroke(s->vg);
 }
-#include <iostream>
+
 static void ui_draw_vision(UIState *s) {
   const UIScene *scene = &s->scene;
   // Draw augmented elements
@@ -2005,7 +2005,7 @@ static void ui_draw_vision(UIState *s) {
     ui_draw_world(s);
   }
 
-  std::cout << "Hello, world!" << std::endl;
+  // Brake
   ui_draw_vision_brake(s);
 
   // Set Speed, Current Speed, Status/Events
