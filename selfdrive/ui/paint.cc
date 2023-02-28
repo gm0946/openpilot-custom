@@ -82,6 +82,15 @@ static void ui_draw_circle_image_rotation(const UIState *s, int center_x, int ce
   nvgRestore(s->vg); 
 }
 
+static void ui_draw_circle_image(const UIState *s, int center_x, int center_y, int radius, const char *image, NVGcolor color, float img_alpha) {
+  nvgBeginPath(s->vg);
+  nvgCircle(s->vg, center_x, center_y, radius);
+  nvgFillColor(s->vg, color);
+  nvgFill(s->vg);
+  const int img_size = radius * 1.5;
+  ui_draw_image(s, {center_x - (img_size / 2), center_y - (img_size / 2), img_size, img_size}, image, img_alpha);
+}
+
 static void ui_draw_circle_image(const UIState *s, int center_x, int center_y, int radius, const char *image, bool active) {
   float bg_alpha = active ? 0.3f : 0.1f;
   float img_alpha = active ? 1.0f : 0.15f;
@@ -1975,12 +1984,31 @@ static void ui_draw_grid(UIState *s) {
   nvgStroke(s->vg);
 }
 
+static void ui_draw_vision_brake(UIState *s) {
+  const UIScene *scene = &s->scene;
+
+  const int radius = 96;
+  const int center_x = s->viz_rect.x + radius + (bdr_s * 2) + radius*2 + 60;
+  const int center_y = s->viz_rect.bottom() - footer_h / 2;
+
+  auto car_state = (*s->sm)["carState"].getCarState();
+  bool brake_valid = car_state.getBrakeLights();
+  float brake_img_alpha = brake_valid ? 1.0f : 0.15f;
+  float brake_bg_alpha = brake_valid ? 0.3f : 0.1f;
+  NVGcolor brake_bg = nvgRGBA(0, 0, 0, (255 * brake_bg_alpha));
+
+  ui_draw_circle_image(s, center_x, center_y, radius, "brake", brake_bg, brake_img_alpha);
+}
+
 static void ui_draw_vision(UIState *s) {
   const UIScene *scene = &s->scene;
   // Draw augmented elements
   if (scene->world_objects_visible) {
     ui_draw_world(s);
   }
+
+  ui_draw_vision_brake(s);
+
   // Set Speed, Current Speed, Status/Events
   ui_draw_vision_header(s);
   if ((*s->sm)["controlsState"].getControlsState().getAlertSize() == cereal::ControlsState::AlertSize::NONE) {
@@ -2074,6 +2102,7 @@ void ui_nvg_init(UIState *s) {
 
   // init images
   std::vector<std::pair<const char *, const char *>> images = {
+    {"brake", "../assets/img_brake_disc.png"},
     {"wheel", "../assets/img_chffr_wheel.png"},
     {"driver_face", "../assets/img_driver_face.png"},
     {"speed_bump", "../assets/addon/img/img_speed_bump.png"},

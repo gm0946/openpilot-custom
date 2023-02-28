@@ -248,6 +248,7 @@ static void update_state(UIState *s) {
   if (sm.updated("liveParameters")) {
     //scene.liveParams = sm["liveParameters"].getLiveParameters();
     auto live_data = sm["liveParameters"].getLiveParameters();
+    auto data = sm["carState"].getCarState();
     scene.liveParams.angleOffset = live_data.getAngleOffsetDeg();
     scene.liveParams.angleOffsetAverage = live_data.getAngleOffsetAverageDeg();
     scene.liveParams.stiffnessFactor = live_data.getStiffnessFactor();
