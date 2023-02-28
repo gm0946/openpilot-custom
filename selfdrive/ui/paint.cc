@@ -759,6 +759,22 @@ static void ui_draw_vision_face(UIState *s) {
   ui_draw_circle_image(s, center_x, !s->scene.animated_rpm?center_y:(center_y-60), radius, "driver_face", s->scene.dm_active);
 }
 
+static void ui_draw_vision_brake(UIState *s) {
+  const UIScene *scene = &s->scene;
+
+  const int radius = 96;
+  const int center_x = radius + bdr_s + 60;
+  const int center_y = s->fb_h - footer_h + ((footer_h - radius) / 2);
+
+  auto car_state = (*s->sm)["carState"].getCarState();
+  bool brake_valid = car_state.getBrakeLights();
+  float brake_img_alpha = brake_valid ? 1.0f : 0.15f;
+  float brake_bg_alpha = brake_valid ? 0.3f : 0.1f;
+  NVGcolor brake_bg = nvgRGBA(0, 0, 0, (255 * brake_bg_alpha));
+
+  ui_draw_circle_image(s, center_x, !s->scene.animated_rpm?center_y:(center_y-60), radius, "brake", brake_bg, brake_img_alpha);
+}
+
 //BB START: functions added for the display of various items
 static int bb_ui_draw_measure(UIState *s, const char* bb_value, const char* bb_uom, const char* bb_label,
     int bb_x, int bb_y, int bb_uom_dx,
@@ -1982,22 +1998,6 @@ static void ui_draw_grid(UIState *s) {
     nvgLineTo(s->vg, s->fb_w, s->fb_h/2 - (i*108));
   }
   nvgStroke(s->vg);
-}
-
-static void ui_draw_vision_brake(UIState *s) {
-  const UIScene *scene = &s->scene;
-
-  const int radius = 96;
-  const int center_x = s->viz_rect.x + radius + (bdr_s * 2) + radius*2 + 60;
-  const int center_y = s->viz_rect.bottom() - footer_h / 2;
-
-  auto car_state = (*s->sm)["carState"].getCarState();
-  bool brake_valid = car_state.getBrakeLights();
-  float brake_img_alpha = brake_valid ? 1.0f : 0.15f;
-  float brake_bg_alpha = brake_valid ? 0.3f : 0.1f;
-  NVGcolor brake_bg = nvgRGBA(0, 0, 0, (255 * brake_bg_alpha));
-
-  ui_draw_circle_image(s, center_x, center_y, radius, "brake", brake_bg, brake_img_alpha);
 }
 
 static void ui_draw_vision(UIState *s) {
