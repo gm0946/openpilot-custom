@@ -761,7 +761,7 @@ static void ui_draw_vision_face(UIState *s) {
 
 static void ui_draw_vision_brake(UIState *s) {
   const int radius = 85;
-  const int center_x = radius + bdr_s + 120;
+  const int center_x = radius + bdr_s + 160;
   const int center_y = s->fb_h - footer_h + ((footer_h - radius) / 2);
 
   auto car_state = (*s->sm)["carState"].getCarState();
@@ -770,7 +770,7 @@ static void ui_draw_vision_brake(UIState *s) {
   float brake_bg_alpha = brake_valid ? 0.3f : 0.1f;
   NVGcolor brake_bg = nvgRGBA(0, 0, 0, (255 * brake_bg_alpha));
 
-  ui_draw_circle_image(s, center_x, !s->scene.animated_rpm?center_y:(center_y-80), radius, "brake", brake_bg, brake_img_alpha);
+  ui_draw_circle_image(s, center_x, !s->scene.animated_rpm?center_y:(center_y-40), radius, "brake", brake_bg, brake_img_alpha);
 }
 
 //BB START: functions added for the display of various items
