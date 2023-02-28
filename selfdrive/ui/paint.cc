@@ -761,7 +761,7 @@ static void ui_draw_vision_face(UIState *s) {
 
 static void ui_draw_vision_brake(UIState *s) {
   const int radius = 85;
-  const int center_x = radius + bdr_s + 160;
+  const int center_x = radius + bdr_s + 200;
   const int center_y = s->fb_h - footer_h + ((footer_h - radius) / 2);
 
   auto car_state = (*s->sm)["carState"].getCarState();
