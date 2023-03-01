@@ -308,6 +308,7 @@ SoftwarePanel::SoftwarePanel(QWidget* parent) : ListWidget(parent) {
     QString desc = "";
     QString commit_local = QString::fromStdString(Params().get("GitCommit").substr(0, 10));
     QString commit_remote = QString::fromStdString(Params().get("GitCommitRemote").substr(0, 10));
+
     QString empty = "";
     desc += tr("LOCAL: %1  REMOTE: %2%3%4 ").arg(commit_local, commit_remote, empty, empty);
     if (!last_ping.length()) {
@@ -390,7 +391,7 @@ void SoftwarePanel::updateLabels() {
     lastUpdate = timeAgo(QDateTime::fromString(tm, "yyyy-MM-dd HH:mm:ss"));
   }
 
-  versionLbl->setText("OPKR");
+  versionLbl->setText("OPKR 0.8.17");
   lastUpdateLbl->setText(lastUpdate);
   updateBtn->setText(tr("CHECK"));
   updateBtn->setEnabled(true);

@@ -358,10 +358,10 @@ void CPresetWidget::refresh( int nID )
 SwitchOpenpilot::SwitchOpenpilot() : ButtonControl(tr("Change Repo/Branch"), "", tr("Change to another open pilot code. You can change it by entering ID/repository/branch.")) {
   QObject::connect(this, &ButtonControl::clicked, [=]() {
     if (text() == tr("CHANGE")) {
-      QString userid = InputDialog::getText(tr("First: Input the Git ID."), this, "github.com/<ID>/<Repository>.git -b <Branch>", false, 1, "openpilotkr");
+      QString userid = InputDialog::getText(tr("First: Input the Git ID."), this, "github.com/<ID>/<Repository>.git -b <Branch>", false, 1, "gm0946");
       if (userid.length() > 0) {
         getUserID(userid);
-        QString repoid = InputDialog::getText(tr("Second: Input the repository."), this, "github.com/"+userid+"/<Repository>.git -b <Branch>", false, 1, "openpilot");
+        QString repoid = InputDialog::getText(tr("Second: Input the repository."), this, "github.com/"+userid+"/<Repository>.git -b <Branch>", false, 1, "openpilot-custom");
         if (repoid.length() > 0) {
           getRepoID(repoid);
           QString branchid = InputDialog::getText(tr("Last: Input the branch name."), this, "github.com/"+userid+"/"+repoid+".git -b <Branch>", false, 1, "OPKR");
