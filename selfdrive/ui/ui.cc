@@ -481,7 +481,7 @@ static void update_status(UIState *s) {
 
   Params params;
 
-  //opkr navi on boot
+  //opkr navi on boot_
   if (!s->scene.navi_on_boot && (s->sm->frame - s->scene.started_frame > 30*UI_FREQ)) {
     if (params.getBool("OpkrRunNaviOnBoot") && params.getBool("ControlsReady") && (params.get("CarParams").size() > 0)) {
       s->scene.navi_on_boot = true;
