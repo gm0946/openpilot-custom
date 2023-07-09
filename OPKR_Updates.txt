@@ -1,6 +1,8 @@
 ☞ Use two fingers to scroll down ☜
 
 #### gm0946 #####
+
+
 2023-01-20
 - MaxSpeed Sync as RoadLimitSpeed+Offset(Ext Navi)
 - Auto Gap by Speed Toggle(Press Gap button 5times)
