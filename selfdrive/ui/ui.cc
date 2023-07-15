@@ -503,7 +503,7 @@ static void update_status(UIState *s) {
       s->scene.navi_on_boot = true;
     }
   }
-  if (!s->scene.move_to_background && (s->sm->frame - s->scene.started_frame > (NAVI_TIME_DELAY+15)*UI_FREQ)) {
+  if (!s->scene.move_to_background && (s->sm->frame - s->scene.started_frame > (NAVI_TIME_DELAY+10)*UI_FREQ)) {
     if (params.getBool("OpkrRunNaviOnBoot") && params.getBool("OpkrMapEnable") ) {
       s->scene.move_to_background = true;
       s->scene.map_on_top = false;
