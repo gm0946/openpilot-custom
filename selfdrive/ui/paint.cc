@@ -1460,6 +1460,8 @@ static void draw_compass(UIState *s) {
   }
 }
 
+#include <iostream>
+
 static void draw_navi_button(UIState *s) {
   int btn_w = 140;
   int btn_h = 140;
@@ -1467,6 +1469,10 @@ static void draw_navi_button(UIState *s) {
   int btn_y = 1080 - btn_h - 35;
   int btn_xc1 = btn_x1 + (btn_w/2);
   int btn_yc = btn_y + (btn_h/2);
+
+  std::cout << "btn_x1: " << btn_x1 << ", btn_y: " << btn_y << std::endl;
+
+
   nvgTextAlign(s->vg, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
   nvgBeginPath(s->vg);
   nvgRoundedRect(s->vg, btn_x1, btn_y, btn_w, btn_h, 100);
