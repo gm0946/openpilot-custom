@@ -15,7 +15,7 @@
 #define BACKLIGHT_OFFROAD 50
 
 // 네비 실행 타이머
-const int NAVI_TIME_DELAY = 0;
+const int NAVI_TIME_DELAY = 50;
 
 // Projects a point in car to space to the corresponding point in full frame
 // image space.
@@ -492,7 +492,7 @@ static void update_status(UIState *s) {
       s->scene.map_on_overlay = false;
       params.putBool("OpkrMapEnable", true);
       if (s->scene.navi_select == 0) {
-        system("am start com.thinkware.inaviair/com.thinkware.inaviair.UIActivity");
+        //system("am start com.thinkware.inaviair/com.thinkware.inaviair.UIActivity");
       } else if (s->scene.navi_select == 1) {
         system("am start com.mnsoft.mappyobn/com.mnsoft.mappy.MainActivity");
       } else if (s->scene.navi_select == 2) {
@@ -508,7 +508,7 @@ static void update_status(UIState *s) {
       s->scene.move_to_background = true;
       s->scene.map_on_top = false;
       s->scene.map_on_overlay = true;
-      system("am start --activity-task-on-home com.opkr.maphack/com.opkr.maphack.MainActivity");
+      //system("am start --activity-task-on-home com.opkr.maphack/com.opkr.maphack.MainActivity");
     } else if (s->sm->frame - s->scene.started_frame > 30*UI_FREQ) {
       s->scene.move_to_background = true;
     }
