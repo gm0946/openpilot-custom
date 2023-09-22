@@ -2625,8 +2625,8 @@
     </message>
     <message>
         <location filename="../qt/widgets/opkr.cc" line="5929"/>
-        <source>Waze</source>
-        <translation>웨이즈</translation>
+        <source>iNavi Offline</source>
+        <translation>아이나비 OFFLINE</translation>
     </message>
     <message>
         <location filename="../qt/widgets/opkr.cc" line="5931"/>
