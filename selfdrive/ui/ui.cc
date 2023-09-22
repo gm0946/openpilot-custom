@@ -15,7 +15,7 @@
 #define BACKLIGHT_OFFROAD 50
 
 // 네비 실행 타이머
-const int NAVI_TIME_DELAY = 0;
+//const int NAVI_TIME_DELAY = 0;
 
 // Projects a point in car to space to the corresponding point in full frame
 // image space.
