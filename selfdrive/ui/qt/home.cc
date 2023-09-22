@@ -367,6 +367,7 @@ void HomeWindow::mousePressEvent(QMouseEvent* e)
       } else if (QUIState::ui_state.scene.navi_select == 1) {
         QProcess::execute("pkill com.mnsoft.mappyobn");
       } else if (QUIState::ui_state.scene.navi_select == 2) {
+        //QProcess::execute("pkill com.waze");
         QProcess::execute("pkill com.thinkware.inaviair");
       }
       QUIState::ui_state.scene.map_on_top = false;
