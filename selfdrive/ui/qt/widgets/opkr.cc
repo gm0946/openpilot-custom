@@ -5926,7 +5926,7 @@ void OPKRNaviSelect::refresh() {
   } else if (option == "1") {
     label.setText(tr("Mappy"));
   } else if (option == "2") {
-    label.setText(tr("아이나비OL"));
+    label.setText(tr("iNaviOL"));
   } else if (option == "3") {
     label.setText(tr("TMap"));
   } else {
