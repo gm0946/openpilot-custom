@@ -2626,7 +2626,7 @@
     <message>
         <location filename="../qt/widgets/opkr.cc" line="5929"/>
         <source>iNaviOL</source>
-        <translation>아이나비 오프라인</translation>
+        <translation>아이나비OL</translation>
     </message>
     <message>
         <location filename="../qt/widgets/opkr.cc" line="5931"/>
