@@ -485,8 +485,7 @@ static void update_status(UIState *s) {
 
   //opkr navi on boot_
   if (!s->scene.navi_on_boot && (s->sm->frame - s->scene.started_frame > 5*UI_FREQ)) {
-    //if (params.getBool("OpkrRunNaviOnBoot") && params.getBool("ControlsReady") && (params.get("CarParams").size() > 0)) {
-      if (params.getBool("OpkrRunNaviOnBoot")) {
+    if (params.getBool("OpkrRunNaviOnBoot") && params.getBool("ControlsReady") && (params.get("CarParams").size() > 0)) {
       s->scene.navi_on_boot = true;
       s->scene.map_is_running = true;
       s->scene.map_on_top = true;
@@ -506,8 +505,7 @@ static void update_status(UIState *s) {
     }
   }
   if (!s->scene.move_to_background && (s->sm->frame - s->scene.started_frame > 20*UI_FREQ)) {
-    //if (params.getBool("OpkrRunNaviOnBoot") && params.getBool("OpkrMapEnable") && params.getBool("ControlsReady") && (params.get("CarParams").size() > 0)) {
-      if (params.getBool("OpkrRunNaviOnBoot") && params.getBool("OpkrMapEnable")) {
+    if (params.getBool("OpkrRunNaviOnBoot") && params.getBool("OpkrMapEnable") && params.getBool("ControlsReady") && (params.get("CarParams").size() > 0)) {
       s->scene.move_to_background = true;
       s->scene.map_on_top = false;
       s->scene.map_on_overlay = true;
