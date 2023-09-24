@@ -505,7 +505,8 @@ static void update_status(UIState *s) {
     }
   }
   if (!s->scene.move_to_background && (s->sm->frame - s->scene.started_frame > 20*UI_FREQ)) {
-    if (params.getBool("OpkrRunNaviOnBoot") && params.getBool("OpkrMapEnable") && params.getBool("ControlsReady") && (params.get("CarParams").size() > 0)) {
+    //if (params.getBool("OpkrRunNaviOnBoot") && params.getBool("OpkrMapEnable") && params.getBool("ControlsReady") && (params.get("CarParams").size() > 0)) {
+      if (params.getBool("OpkrRunNaviOnBoot") && params.getBool("OpkrMapEnable")) {
       s->scene.move_to_background = true;
       s->scene.map_on_top = false;
       s->scene.map_on_overlay = true;
